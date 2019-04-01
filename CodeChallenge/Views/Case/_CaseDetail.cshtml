@@ -1,0 +1,59 @@
+﻿@model CodeChallenge.Models.Case
+
+<div class="row">
+    <div class="col-md-6">
+        <p class="d-inline" style="font-weight:bold">Authorization Number: </p><p class="d-inline">@Model.AuthNum</p>
+    </div>
+    <div class="col-md-6">
+        <p class="d-inline" style="font-weight:bold">Case Number: </p><p class="d-inline">@Model.CaseNumber</p>
+    </div>
+    <div class="col-md-6">
+        <p class="d-inline" style="font-weight:bold">Status: </p><p class="d-inline">@Model.Status</p>
+    </div>
+    <div class="col-md-6">
+        <p class="d-inline" style="font-weight:bold">Date Last Updated: </p><p class="d-inline">@Model.LastUpdate</p>
+    </div>
+    <div class="col-md-6">
+        <p class="d-inline" style="font-weight:bold">Approval Date: </p><p class="d-inline">@Model.ApprovalDate</p>
+    </div>
+    <div class="col-md-6">
+        <p class="d-inline" style="font-weight:bold">Service Code: </p><p class="d-inline">@Model.ServCode</p>
+    </div>
+    <div class="col-md-6">
+        <p class="d-inline" style="font-weight:bold">Service Description: </p><p class="d-inline">@Model.ServDescription</p>
+    </div>
+    <div class="col-md-6">
+        <p class="d-inline" style="font-weight:bold">Site Name: </p><p class="d-inline">@Model.SiteName</p>
+    </div>
+    <div class="col-md-6">
+        <p class="d-inline" style="font-weight:bold">Expiration Date: </p><p class="d-inline">@Model.GetExpDateFormat</p>
+    </div>
+</div>
+
+@if(Model.Procedures.Count > 0){
+    <div class="row" style="margin-top:15px">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Procedure</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Qty Requested</th>
+                    <th scope="col">Qty Approved</th>
+                    <th scope="col">Modifiers</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Procedures)
+                {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Desc</td>
+                    <td>@item.QtyRequested</td>
+                    <td>@item.QtyApproved</td>
+                    <td>@item.Modifiers</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
